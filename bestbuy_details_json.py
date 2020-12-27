@@ -8,11 +8,10 @@ from pathlib import Path
 import json
 
 # Import URLs from this local module
-from bbuy_urls_list import bestbuy_urls
+from bestbuy_products_details_urls import bestbuy_urls
 
-# add first 3 URLs in this list; manually remove these elements from the module
-# using list comprehension
-url_list = [bestbuy_urls[link] for link in range(3)]
+# add first 3 URLs in this list
+url_list = [bestbuy_urls[link] for link in range(3)]    # using list comprehension
 
 for url in url_list:
 
@@ -229,7 +228,7 @@ for url in url_list:
     master_json = json.dumps(product_details_master_JSON, indent=4)
 
     # create the file and write the JSON to it
-    json_file_save_path = 'C:/Users/bhask/PycharmProjects/selenium/bestbuy_json/'
+    json_file_save_path = 'C:/Users/<username>/<path>/<path>/'
     json_filename = f"{sku}_details_master_JSON.json"
     savedFile = Path(json_file_save_path, json_filename)
 
