@@ -3,15 +3,13 @@ import json
 import os
 
 # location containing all json files
-PATH = 'C:/Users/bhask/PycharmProjects/selenium/bestbuy_json/'
+PATH = 'C:/Users/<username>/<path>/<to>/<json files>/'
 
 # list every path in the directory
 paths = os.listdir(PATH)
 
 # initialise the list that will hold every json as list element
-grandMasterList = []
-
-jsonParseCount = 0
+masterList = []
 
 # loop through each path
 for file in paths:
@@ -24,17 +22,14 @@ for file in paths:
 
         # open the file with its absolute path
         with open(absFilePath, 'r') as f:
-            jsonParseCount += 1
             # load the file contents as json
             data = json.load(f)
             # append the json data to the list
-            grandMasterList.append(data)
+            masterList.append(data)
 
-print(json.dumps(grandMasterList, indent=1))
-print(jsonParseCount)
+# create a new file to write the list as json
+masterJSONFile = "masterJSONList.json"
+savePath = Path(PATH, masterJSONFile)
 
-# create a new json file to write the list
-grandMasterJSON = "grandMasterJSONList.json"
-savePath = Path(PATH, grandMasterJSON)
-with open(savePath, 'w') as ff:
-    json.dump(grandMasterList, ff, indent=4)
+with open(savePath, 'w') as master_file:
+    json.dump(masterList, master_file, indent=4)
